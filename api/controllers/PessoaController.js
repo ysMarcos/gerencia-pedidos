@@ -55,6 +55,19 @@ class PessoaController {
             return res.status(500).json(err.message);
         }
     }
+
+    static async pegaFuncionarios(req, res){
+    try{
+        const pegaFuncionarios = await database.Pessoas.findAll({
+            where: {
+                cargo: 'garçom'
+            }
+        })
+        return res.status(200).json(pegaFuncionarios)
+    } catch(err){
+        res.status(500).json(message)
+    }
+}
 }
 
 module.exports = PessoaController;  

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Itens extends Model {
    
     static associate(models) {
-      Itens.belongsToMany(Pedidos);
+      Itens.belongsToMany(models.Pedidos);
     }
   }
   Itens.init({
