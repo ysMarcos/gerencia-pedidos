@@ -5,8 +5,10 @@ const itens = require('./itensRoute');
 
 
 module.exports = app => {
-    app.use(bodyParser.json())
-    app.use(pessoas)
-    app.use(mesas)
-    app.use(itens)
+    app.use(
+        bodyParser.json(),
+        pessoas,
+        mesas,
+        itens
+    )
 }

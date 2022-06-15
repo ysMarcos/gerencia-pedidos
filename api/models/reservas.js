@@ -15,9 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reservas.init({
-    nome: DataTypes.STRING,
-    valor: DataTypes.FLOAT,
-    categoria: DataTypes.STRING
+    cliente_id: DataTypes.INTEGER,
+    mesa_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Reservas',
