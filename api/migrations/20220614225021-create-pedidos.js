@@ -8,15 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      pessoa_id:{
+      cliente_id:{
         AllowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'Pessoas', key: 'id'},
+        references: {model: 'Pessoas', key: 'id'}
+      },
+      funcionario_id:{
+        AllowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Pessoas', key: 'id'}
       },
       mesa_id:{
         AllowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'Mesas', key: 'id'},
+        references: {model: 'Mesas', key: 'id'}
       },
       dataPedido: {
         type: Sequelize.DATEONLY
