@@ -82,7 +82,6 @@ class MesaController {
     static async criaReserva(req, res) {
         const {mesaId} = req.params
         const novaReserva = {...req.body, mesa_id: Number(mesaId)}
-        console.log(req.body, novaReserva)
         try {
             const novaReservaCriada = await database.Reservas.create(novaReserva);
             return res.status(200).json(novaReservaCriada);

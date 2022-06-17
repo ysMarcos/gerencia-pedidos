@@ -1,37 +1,27 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Pedidos', {
+    await queryInterface.createTable('itens_pedidos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cliente_id:{
-        AllowNull: false,
+      itens_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'Pessoas', key: 'id'}
+        references: {model: 'Itens', key: 'id'}
       },
-      funcionario_id:{
-        AllowNull: false,
+      pedido_id: {
         type: Sequelize.INTEGER,
-        references: {model: 'Pessoas', key: 'id'}
-      },
-      mesa_id:{
-        AllowNull: false,
-        type: Sequelize.INTEGER,
-        references: {model: 'Mesas', key: 'id'}
-      },
-      itens_id:{
-        AllowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Pedidos', key: 'id'}
       },
-      dataPedido: {
-        type: Sequelize.DATEONLY
+      quantidade: {
+        type: Sequelize.INTEGER
       },
-      valorTotal: {
+      valor_itens: {
         type: Sequelize.FLOAT
       },
       createdAt: {
@@ -45,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Pedidos');
+    await queryInterface.dropTable('itens_pedidos');
   }
 };
