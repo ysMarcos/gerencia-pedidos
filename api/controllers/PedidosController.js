@@ -20,24 +20,25 @@ class PedidosController {
         for (const item of items) {
 
             const itemDb = await database.Itens.findByPk(item.itemId);
+            console.log(itemDb.dataValues);
             const itemPedido = {
                 itens_id: item.itemId,
                 pedido_id: pedido_id,
                 quantidade: item.quantidade,
-                valor: itemDb.dataValues.valor
+                valor_itens: itemDb.dataValues.valor
             };
-            console.log(itemPedido);
             const itemObj = await database.itens_pedido.findOne({
                 where: {
                     itens_id: item.itemId,
-                    pedido_id: pedido_id,
-                    quantidade: item.quantidade 
+                    pedido_id: pedido_id 
                 }
             })
+
             
             if (itemObj){
                 await database.itens_pedido.update({
-                    quantidade: itemObj.dataValues.quantidade + item.quantidade
+                    quantidade: itemObj.dataValues.quantidade + item.quantidade,
+                    valor_itens: itemDb.dataValues.valor
                 },
                 {
                     where:{
