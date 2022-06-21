@@ -5,6 +5,6 @@ const router = Router();
 
 router.post('/pedidos', PedidosController.criaPedido);
 
-router.post('/pedidos/:id_pedido', PedidosController.adicionarItemPedido)
+router.post('/pedidos/:pedido_id', PedidosController.adicionarItemPedido)
 
 module.exports = router;

@@ -14,12 +14,42 @@ class PedidosController {
     }
 
     static async adicionarItemPedido(req, res){
-        const { id_pedido } = req.params;
+        const { pedido_id } = req.params;
         const { items } = req.body;
-        const item = await database.Itens.findByPk(id_pedido);
-        
-        try {
+        try{
+        for (const item of items) {
+
+            const itemDb = await database.Itens.findByPk(item.itemId);
+            const itemPedido = {
+                itens_id: item.itemId,
+                pedido_id: pedido_id,
+                quantidade: item.quantidade,
+                valor: itemDb.dataValues.valor
+            };
+            console.log(itemPedido);
+            const itemObj = await database.itens_pedido.findOne({
+                where: {
+                    itens_id: item.itemId,
+                    pedido_id: pedido_id,
+                    quantidade: item.quantidade 
+                }
+            })
             
+            if (itemObj){
+                await database.itens_pedido.update({
+                    quantidade: itemObj.dataValues.quantidade + item.quantidade
+                },
+                {
+                    where:{
+                        pedido_id: pedido_id,
+                        itens_id: itemObj.itens_id
+                    }
+                })
+            } else {
+                await database.itens_pedido.create(itemPedido)
+            }
+        }
+        return res.status(200).json(items)
         } catch (err) {
             return res.status(500).json(err.message);
         }
