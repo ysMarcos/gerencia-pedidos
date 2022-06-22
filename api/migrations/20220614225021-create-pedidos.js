@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Pedidos', {
@@ -27,6 +30,11 @@ module.exports = {
         AllowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Pedidos', key: 'id'}
+      },
+      fechado:{
+        AllowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       dataPedido: {
         type: Sequelize.DATEONLY

@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Pedidos.init({
     dataPedido: DataTypes.DATEONLY,
-    valorTotal: DataTypes.FLOAT
+    valorTotal: DataTypes.FLOAT,
+    fechado: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Pedidos',

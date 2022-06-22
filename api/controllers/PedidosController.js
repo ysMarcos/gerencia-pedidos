@@ -1,10 +1,11 @@
+const { BOOLEAN } = require('sequelize');
 const database = require('../models');
 
 class PedidosController {
     
     static async criaPedido(req, res){
-        const {mesaId, funcionarioId, clienteId} = req.body;
-        const novoPedido = {mesa_id: Number(mesaId), funcionario_id: Number(funcionarioId), cliente_id: Number(clienteId)};
+        const {mesaId, funcionarioId, clienteId, fechado } = req.body;
+        const novoPedido = {mesa_id: Number(mesaId), funcionario_id: Number(funcionarioId), cliente_id: Number(clienteId)} ;
         try {
             const novoPedidoCriado = await database.Pedidos.create(novoPedido);
             return res.status(200).json(novoPedidoCriado);
