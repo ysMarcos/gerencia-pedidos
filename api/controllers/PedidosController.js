@@ -33,11 +33,18 @@ class PedidosController {
                     pedido_id: pedido_id 
                 }
             })
-
             
             if (itemObj){
+
+                let quantidade;
+                if (item.acao === "ADICIONAR") {
+                    quantidade = itemObj.dataValues.quantidade + item.quantidade
+                } else {
+                    quantidade = itemObj.dataValues.quantidade - item.quantidade
+                }
+                console.log(quantidade)
                 await database.itens_pedido.update({
-                    quantidade: itemObj.dataValues.quantidade + item.quantidade,
+                    quantidade: quantidade,
                     valor_itens: itemDb.dataValues.valor
                 },
                 {
@@ -55,6 +62,9 @@ class PedidosController {
             return res.status(500).json(err.message);
         }
     }
+
+    
+    
 }
 
 module.exports = PedidosController;
