@@ -33,7 +33,7 @@ class PedidosController {
                     pedido_id: pedido_id 
                 }
             })
-            
+            console.log(itemObj)
             if (itemObj){
 
                 let quantidade;
@@ -42,7 +42,6 @@ class PedidosController {
                 } else {
                     quantidade = itemObj.dataValues.quantidade - item.quantidade
                 }
-                console.log(quantidade)
                 await database.itens_pedido.update({
                     quantidade: quantidade,
                     valor_itens: itemDb.dataValues.valor
@@ -63,7 +62,20 @@ class PedidosController {
         }
     }
 
-    
+    static async pegaValorTotal(req, res){
+        const { pedido_id } = req.params;
+        
+        try{
+            const valorTotal = await database.itens_pedido.sum('valor_itens',{
+                where: {
+                    pedido_id: pedido_id
+                },
+            })
+            return res.status(200).json(valorTotal)
+        } catch(err) {
+            return res.status(500).json(err.message)
+        }
+    }    
     
 }
 
