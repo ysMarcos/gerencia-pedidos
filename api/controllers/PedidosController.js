@@ -101,6 +101,40 @@ class PedidosController {
             return res.status(500).json(err.message);
         }
     }
+
+    static async pegaPedidosAtivos(req, res){
+        try{
+            const pedidosAtivos = await database.Pedidos.findAll({
+                attributes:[
+                    'id',
+                    'cliente_id',
+                    'funcionario_id',
+                    'mesa_id',
+                    'itens_id'
+                ],
+                where:{
+                    fechado: 0
+                }
+            })
+            return res.status(200).json(pedidosAtivos)
+        } catch(err){
+            return res.status(500).json(err.message);
+        }
+    }
+
+    static async atualizaStatusPedido(req, res){
+        const {id} = req.params
+        const statusPedido = req.body
+        try{
+            const pedidoAtualizado = await database.Pedidos.update(statusPedido,{
+                where:{
+                    id: Number(id)
+                }})
+            return res.status(200).json(pedidoAtualizado)
+        } catch(err){
+            res.status(500).json(err.message)
+        }
+    }
 }
 
 
