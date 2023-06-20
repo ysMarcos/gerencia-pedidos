@@ -11,7 +11,7 @@ Foi criado durante a matéria de Projeto: Orientação a Objetos, com o tema liv
 
 Dillinger uses a number of open source projects to work properly:
 
-- Javascript
-- NodeJS
+- Javascript - Linguagem escolhida para o desenvolvimento da aplicação
+- NodeJS - Executar o Javascript do lado do servidor
 - Sequelize - Uma ORM para Javascript
-- Mysql
+- Mysql - Banco de dados
