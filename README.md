@@ -1,6 +1,6 @@
 # Gerencia Pedidos
 
-Este é um projeto desenvolvido por:
+Este projeto foi desenvolvido por:
 - Marcos Guilherme Yurasseck Sassaki
 - Kevin Matos
 
