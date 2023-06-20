@@ -5,7 +5,7 @@ Este é um projeto desenvolvido por:
 - Kevin Matos
 
 ## Objetivo
-Foi criado durante a matéria de Projeto: Orientação a Objetos, com o tema livre, foi escolhido o backend para o gerenciamento de pedidos de um restaurante.
+Foi criado durante a matéria de Projeto: Orientação a Objetos, com o tema livre, foi escolhido o backend de uma aplicação para o gerenciamento de pedidos de um restaurante.
 
 ## Tecnologias
 
