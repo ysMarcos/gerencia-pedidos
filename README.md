@@ -9,8 +9,6 @@ Foi criado durante a matéria de Projeto: Orientação a Objetos, com o tema liv
 
 ## Tecnologias
 
-Dillinger uses a number of open source projects to work properly:
-
 - Javascript - Linguagem escolhida para o desenvolvimento da aplicação
 - NodeJS - Executar o Javascript do lado do servidor
 - Sequelize - Uma ORM para Javascript
